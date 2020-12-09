@@ -41,11 +41,25 @@ var colors = [];
 
 var interpolateShortest = true;
 
+// required var for oscillator
+var osc;
+var playing;
+var cnv;
+//////////
+
 function setup() {
-  createCanvas(800, 800);
+  var cnv = createCanvas(800, 800);
   colorMode(HSB);
   noStroke();
   shakeColors();
+
+  // osc setup
+  cnv.mousePressed(PlayOscillator);
+  osc = new p5.Oscillator();
+  osc.setType("sine");
+  osc.freq(200);
+  osc.amp(0);
+  /////////
 }
 
 function draw() {
@@ -92,8 +106,22 @@ function shakeColors() {
   }
 }
 
+// required to play oscillator
+function PlayOscillator() {
+  osc.start();
+  osc.amp(0.5, 0.5);
+  playing = true;
+}
+///////////////////  
+
 function mouseReleased() {
   shakeColors();
+  
+  // smooth synth
+  osc.amp(0, 0.5);
+  playing = false;
+  //////////////
+
 }
 
 function keyPressed() {
