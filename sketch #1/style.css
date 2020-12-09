@@ -1,0 +1,9 @@
+#cnv-container {
+    padding: 40px;
+    background-color: black;
+}
+
+.text {
+    font-size: large;
+    font-weight: bolder;
+}
