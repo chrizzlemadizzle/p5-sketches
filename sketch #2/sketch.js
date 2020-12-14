@@ -45,6 +45,11 @@ var interpolateShortest = true;
 var osc;
 var playing;
 var cnv;
+var frequency;
+var amplitude;
+var filter, filterFreq, filterRes;
+var panning;
+
 //////////
 
 function setup() {
@@ -59,6 +64,11 @@ function setup() {
   osc.setType("sine");
   osc.freq(200);
   osc.amp(0);
+  osc.disconnect();
+
+  filter = new p5.LowPass();
+  filter.set(4000, 0);
+  osc.connect(filter);
   /////////
 }
 
@@ -93,6 +103,21 @@ function draw() {
       var posY = tileHeight * gridY;
       rect(posX, posY, tileWidth, tileHeight);
 
+      frequency = map(posX, 0, 800, 600, 5000);
+      amplitude = map(posY, 0, 800, 0, 1);
+      panning = map(mouseX, 0, 800, -1, 1);
+      
+      
+      //console.log(gridY);
+      //osc.freq(frequency);
+
+      if (playing == true) {
+        console.log(amplitude);
+        osc.freq(frequency);
+        osc.amp(amplitude * 0.3);
+        osc.pan(panning);
+      }
+
       // save color for potential ase export
       colors.push(interCol);
     }
@@ -109,7 +134,7 @@ function shakeColors() {
 // required to play oscillator
 function PlayOscillator() {
   osc.start();
-  osc.amp(0.5, 0.5);
+  osc.amp(0.1, 0.5);
   playing = true;
 }
 ///////////////////  
