@@ -88,13 +88,15 @@ function draw() {
       var amount = map(gridX, 0, tileCountX - 1, 0, 1);
 
       if (interpolateShortest) {
-        // switch to rgb
+        // switch to rgb / switch to sine
         colorMode(RGB);
         interCol = lerpColor(col1, col2, amount);
-        // switch back
+        osc.setType("square");
+        // switch back / switch to square
         colorMode(HSB);
       } else {
         interCol = lerpColor(col1, col2, amount);
+        osc.setType("sawtooth");
       }
 
       fill(interCol);
@@ -126,8 +128,8 @@ function draw() {
 
 function shakeColors() {
   for (var i = 0; i < tileCountY; i++) {
-    colorsLeft[i] = color(random(0, 60), random(0, 100), 100);
-    colorsRight[i] = color(random(160, 190), 100, random(0, 100));
+    colorsLeft[i] = color(random(0, 255), random(0, 255), 255);
+    colorsRight[i] = color(random(160, 190), 255, random(0, 100));
   }
 }
 
