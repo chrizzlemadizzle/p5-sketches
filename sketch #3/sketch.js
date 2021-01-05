@@ -66,18 +66,18 @@ function draw() {
   // row count and row height
   var rowCount = int(random(5, 30));
   var rowHeight = height / rowCount;
-  // noteTriggers array of arrays
-  var noteTriggers = [];
-  var noteTriggersTrack = [];
+  var TriggersMain;
+  var TriggersRow = [];
 
   // seperate each line in parts
   for (var i = rowCount; i >= 0; i--) {
     // how many fragments
     var partCount = i + 1;
     var parts = [];
-    var no
-
-    for (var ii = 0; ii < partCount; ii++) {
+    // setup rows of TriggersMain array
+    // TriggersMain.push([]);
+    
+      for (var ii = 0; ii < partCount; ii++) {
       // sub fragments or not?
       if (random() < 0.075) {
         // take care of big values
@@ -106,8 +106,8 @@ function draw() {
       var y = rowHeight * i;
       var w = -map(parts[ii], 0, sumPartsTotal, 0, width);
       var h = rowHeight;
-      // generate noteTrigger array
-      noteTriggers.push([rowCount, x]);
+
+      //TriggersMain[1].push(x);
 
       var index = counter % colorCount;
       var col = color(hueValues[index], saturationValues[index], brightnessValues[index]);
@@ -119,7 +119,8 @@ function draw() {
   }
 
   // create "score"
-  console.table(noteTriggers);
+  TriggersMain = new Array(rowCount).fill(0).map(() => new Array(4).fill(0));
+  console.table(TriggersMain);
 
 }
 
