@@ -187,6 +187,8 @@ function onSoundLoop1 (timeFromNow) {
   var index = (soundLoop1.iterations - 1) % score1.length;
   var interval = score1[index];
   soundLoop1.interval = interval;
+  var panning = random(-1, 1);
+  stutter.pan(panning);
   stutter.play(timeFromNow);
   soundLoop1.maxIterations = score1.length;
 }
@@ -195,6 +197,8 @@ function onSoundLoop2 (timeFromNow) {
   var index = (soundLoop2.iterations - 1) % score2.length;
   var interval = score2[index];
   soundLoop2.interval = interval;
+  // var panning = random(-1, 1);
+  // bass.pan(panning);
   bass.play(timeFromNow);
   soundLoop2.maxIterations = score2.length;
 }
@@ -204,11 +208,14 @@ function onSoundLoop3(timeFromNow) {
   var index = (soundLoop3.iterations - 1) % score3.length;
   var interval = score3[index];
   soundLoop3.interval = interval;
+  var panning = random(-1, 1);
+  giddi.pan(panning);
+  giddi.play(timeFromNow);
   soundLoop3.maxIterations = score3.length;
   
 //  let noteIndex = (soundLoop.iterations - 1) % notePattern.length;
 //  let note = midiToFreq(notePattern[noteIndex]);
-giddi.play(timeFromNow);
+
 //   background(noteIndex * 360 / notePattern.length, 50, 100);
 }
 
@@ -216,6 +223,8 @@ function onSoundLoop4 (timeFromNow) {
   var index = (soundLoop4.iterations - 1) % score4.length;
   var interval = score4[index];
   soundLoop4.interval = interval;
+  var panning = random(-1, 1);
+  tom.pan(panning);
   tom.play(timeFromNow);
   soundLoop4.maxIterations = score4.length;
 }
@@ -224,6 +233,8 @@ function onSoundLoop5 (timeFromNow) {
   var index = (soundLoop5.iterations - 1) % score5.length;
   var interval = score5[index];
   soundLoop5.interval = interval;
+  // var panning = random(-1, 1);
+  // snare.pan(panning);
   snare.play(timeFromNow);
   soundLoop5.maxIterations = score5.length;
 }
@@ -232,6 +243,8 @@ function onSoundLoop6 (timeFromNow) {
   var index = (soundLoop6.iterations - 1) % score6.length;
   var interval = score6[index];
   soundLoop6.interval = interval;
+  var panning = random(-1, 1);
+  ride.pan(panning);
   ride.play(timeFromNow);
   soundLoop6.maxIterations = score6.length;
 }
